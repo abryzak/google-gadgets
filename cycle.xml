@@ -39,8 +39,10 @@ $(document).ready(function() {
   });
 });
 </script>
-<div id="slideshow">
-</div>
+<style type="text/css">
+a img {border: none;}
+</style>
+<div id="slideshow"></div>
 
      ]]>
   </Content> 
