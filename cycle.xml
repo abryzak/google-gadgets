@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="Cycle"/> 
+  <UserPref name="imageURLs" display_name="Image URLs" required="true"/>
+  <UserPref name="imageLinks" display_name="Image Links"/>
+  <UserPref name="effect" display_name="Effect" required="true" datatype="enum" default_value="fade">
+    <EnumValue value="none"/>
+    <EnumValue value="fade"/>
+    <EnumValue value="cover"/>
+    <EnumValue value="scrollUp"/>
+    <EnumValue value="scrollDown"/>
+    <EnumValue value="scrollLeft"/>
+    <EnumValue value="scrollRight"/>
+    <EnumValue value="turnUp"/>
+    <EnumValue value="turnDown"/>
+    <EnumValue value="turnLeft"/>
+    <EnumValue value="turnRight"/>
+  </UserPref>
+  <Content type="html">
+     <![CDATA[ 
+
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="jquery-cycle-all-2.88.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  var prefs = new gadgets.Prefs();
+  var imageURLs = prefs.getString('imageURLs').split('|');
+  var imageLinks = prefs.getString('imageLinks').split('|');
+  for (var idx in imageURLs) {
+    var imageURL = imageURLs[idx];
+    var imageLink = imageLinks[idx];
+    var content = '<img src="' + encodeURI(imageURL) + '" alt="">';
+    if (imageLink != null && imageLink != '')
+      content = '<a href="' + encodeURI(imageLink) + '">' + content + '</a>';
+    $('#slideshow').append(content);
+  }
+  $('#slideshow').cycle({
+    fx: prefs.getString('effect')
+  });
+});
+</script>
+<div id="slideshow">
+</div>
+
+     ]]>
+  </Content> 
+</Module>
