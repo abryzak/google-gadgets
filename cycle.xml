@@ -31,7 +31,7 @@ $(document).ready(function() {
     var imageLink = imageLinks[idx];
     var content = '<img src="' + encodeURI(imageURL) + '" alt="">';
     if (imageLink != null && imageLink != '')
-      content = '<a href="' + encodeURI(imageLink) + '">' + content + '</a>';
+      content = '<a href="' + encodeURI(imageLink) + '" target="_top">' + content + '</a>';
     $('#slideshow').append(content);
   }
   $('#slideshow').cycle({
